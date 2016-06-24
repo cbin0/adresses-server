@@ -2,6 +2,7 @@ var _ = require('lodash')
 var log = require('beautylog')
 var express = require('express')
 var bodyParser = require('body-parser')
+var remoteip = require('remoteip')
 var app = express()
 
 var data = [
@@ -27,6 +28,10 @@ app.post('/send-public', function(req, res) {
 	}
 
 	res.json(data)
+})
+
+app.get('/get-ip', function(req, res) {
+	res.send(remoteip.get(req))
 })
 
 app.get('/get-all-adresses', function(req, res) {
