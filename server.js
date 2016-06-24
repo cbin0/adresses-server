@@ -9,11 +9,11 @@ var data = [
 
 app.use(bodyParser.json())
 
-app.post('/send-public', (req, res) => {
+app.post('/send-public', function(req, res) {
 	
 	var body = req.body
 
-	found = _.find(data, (x) => body.name == x.name)
+	found = _.find(data, function(x) { body.name == x.name})
 
 	if(!found) {
 		data.push({
@@ -29,7 +29,7 @@ app.post('/send-public', (req, res) => {
 	res.json(data)
 })
 
-app.get('/get-all-adresses', (req, res) => {
+app.get('/get-all-adresses', function(req, res) {
 	log.info("data:" + JSON.stringify(data))
 	res.json(data)
 })
